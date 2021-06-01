@@ -1,0 +1,32 @@
+
+.pageSearch {
+  display: flex;
+  flex-flow: column;
+
+  h1 {
+    text-align: center;
+  }
+
+  &__input {
+    display: flex;
+    justify-content: center;
+
+    &__input {
+      padding-right: 30px !important;
+    }
+  }
+
+  .pagination{
+    margin-left: 150px;
+    &__pages{
+      color: #f50057 !important;
+    }
+  }
+}
+
+.photoContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

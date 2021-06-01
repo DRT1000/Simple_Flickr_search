@@ -12,10 +12,6 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
     },
-    output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "[name].[contenthash].js"
-    },
     devServer: {
         contentBase: path.join(__dirname, "dist"),
         port: 3001,
@@ -37,6 +33,15 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.bundle\.ts$/,
+                use: {
+                    loader: 'bundle-loader',
+                    options: {
+                        name: '[name]'
+                    }
+                }
+            },
+            {
                 test: /\.s?css$/,
                 use: [MiniCssExtractPlugin.loader, {
                     loader: "css-loader",
@@ -46,15 +51,6 @@ module.exports = {
                     }
                 }, "sass-loader"],
                 include: /\.module\.s?css$/
-            },
-            {
-                test: /\.bundle\.ts$/,
-                use: {
-                    loader: 'bundle-loader',
-                    options: {
-                        name: '[name]'
-                    }
-                }
             },
             {
                 test: /\.tsx?$/,
@@ -72,4 +68,11 @@ module.exports = {
             }
         ],
     },
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "[name].js"
+    },
+    performance: {
+        hints: false
+    }
 };
